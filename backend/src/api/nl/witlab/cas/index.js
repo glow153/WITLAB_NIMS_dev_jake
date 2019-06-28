@@ -2,7 +2,7 @@ const Router = require('koa-router');
 const casCtrl = require('./cas.ctrl');
 const cas = new Router();
 
-cas.get('/', casCtrl.root);
+cas.post('/', casCtrl.root);
 cas.get('/test', casCtrl.test);
 cas.post('/stream', casCtrl.stream);
 cas.post('/stream_ird', casCtrl.stream_ird);

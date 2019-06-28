@@ -3,6 +3,7 @@ const CasSimpleEntry = require('db/models/CasSimple');
 const CasStreamTest = require('db/models/CasStreamTest')
 const CasIrdStreamTest = require('db/models/CasIrdStreamTest')
 const dbg_log = require('lib/dbg');
+const moment = require('moment')
 
 exports.root = async ctx => {
     // debug print  
@@ -15,7 +16,7 @@ exports.root = async ctx => {
     const schema4check = {
         dt_start: Joi.string().required(),
         dt_end: Joi.string().required(),
-        attribs: Joi.list().required()
+        attribs: Joi.array().required()
     }
 
     const validate = Joi.validate(ctx.request.body, schema4check)
