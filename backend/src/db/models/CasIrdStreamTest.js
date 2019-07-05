@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const casSpIrdSchema = new Schema({
-    datetime: String,
+    datetime: Date,
     sp_ird: {}
 }, { collection: 'cas_ird_stream_test' });
 

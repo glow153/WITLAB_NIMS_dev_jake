@@ -2,15 +2,12 @@ const Joi = require('joi')
 const CasSimpleEntry = require('db/models/CasSimple');
 const CasStreamTest = require('db/models/CasStreamTest')
 const CasIrdStreamTest = require('db/models/CasIrdStreamTest')
-const dbg_log = require('lib/dbg');
+const dbg = require('lib/dbg');
 const moment = require('moment')
 
 exports.root = async ctx => {
     // debug print  
-    const ip = ctx.req.connection.remoteAddress
-    const method = ctx.req.method
-    const target = ctx.req.url
-    dbg_log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
+    dbg.request_log(ctx)
 
     // 스키마 검사
     const schema4check = {
@@ -22,7 +19,7 @@ exports.root = async ctx => {
     const validate = Joi.validate(ctx.request.body, schema4check)
 
     if(validate.error) {
-        dbg_log(`error: invalid req body`)
+        dbg(`error: invalid req body`)
         ctx.status = 400
         ctx.body = validate.error
         return
@@ -61,19 +58,12 @@ exports.root = async ctx => {
 
 exports.test = async ctx => {
     // debug print  
-    const ip = ctx.req.connection.remoteAddress
-    const method = ctx.req.method
-    const target = ctx.req.url
-    dbg_log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
-
+    dbg.request_log(ctx)
     ctx.body = "ok";
 }
 
 exports.stream = async ctx => {
-    const ip = ctx.req.connection.remoteAddress
-    const method = ctx.req.method
-    const target = ctx.req.url
-    dbg_log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
+    dbg.request_log(ctx)
 
     // 스키마 검사
     const schema4check = {
@@ -89,7 +79,7 @@ exports.stream = async ctx => {
     const validate = Joi.validate(ctx.request.body, schema4check)
 
     if(validate.error) {
-        dbg_log(`error: invalid req body`)
+        dbg(`error: invalid req body`)
         ctx.status = 400
         ctx.body = validate.error
         return
@@ -108,10 +98,7 @@ exports.stream = async ctx => {
 }
 
 exports.stream_ird = async ctx => {
-    const ip = ctx.req.connection.remoteAddress
-    const method = ctx.req.method
-    const target = ctx.req.url
-    dbg_log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
+    dbg.request_log(ctx)
 
     // 스키마 검사
     const schema4check = {
@@ -122,7 +109,7 @@ exports.stream_ird = async ctx => {
     const validate = Joi.validate(ctx.request.body, schema4check)
 
     if(validate.error) {
-        dbg_log(`error: invalid req body`)
+        dbg(`error: invalid req body`)
         ctx.status = 400
         ctx.body = validate.error
         return
@@ -140,12 +127,8 @@ exports.stream_ird = async ctx => {
     ctx.body = {result: 1}
 }
 
-
 exports.stream_file = async ctx => {
-    const ip = ctx.req.connection.remoteAddress
-    const method = ctx.req.method
-    const target = ctx.req.url
-    dbg_log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
+    dbg.request_log(ctx)
 
     // 스키마 검사
     const schema4check = {
@@ -155,7 +138,7 @@ exports.stream_file = async ctx => {
     const validate = Joi.validate(ctx.request.body, schema4check)
 
     if(validate.error) {
-        dbg_log(`error: invalid req body`)
+        dbg(`error: invalid req body`)
         ctx.status = 400
         ctx.body = validate.error
         return
@@ -163,6 +146,7 @@ exports.stream_file = async ctx => {
 
     const { fileobj } = ctx.request.body
     
-    fileobj
+
+    ctx.body = {result: 1}
 }
 

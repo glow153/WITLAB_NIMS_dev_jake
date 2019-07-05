@@ -1,15 +1,11 @@
 const Joi = require('joi')
 const Chamber = require('db/models/Chamber')
-const dbg_log = require('lib/dbg')
+const dbg = require('lib/dbg')
 
 
 exports.latest = async ctx => {
     // debug print  
-    const ip = ctx.req.connection.remoteAddress
-    const method = ctx.req.method
-    const target = ctx.req.url
-    dbg_log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
-
+    dbg.request_log(ctx)
     ctx.body = await Chamber.find().limit(10)
 }
 
@@ -18,10 +14,7 @@ exports.latest = async ctx => {
 
 exports.insert = async ctx => {
     // debug print
-    const ip = ctx.req.connection.remoteAddress
-    const method = ctx.req.method
-    const target = ctx.req.url
-    dbg_log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
+    dbg.request_log(ctx)
 
     // 스키마 검사
     const schema4check = {
@@ -33,7 +26,7 @@ exports.insert = async ctx => {
     const validate = Joi.validate(ctx.request.body, schema4check)
 
     if(validate.error) {
-        dbg_log(`error: invalid req body`)
+        dbg(`error: invalid req body`)
         ctx.status = 400
         ctx.body = validate.error
         return
@@ -56,11 +49,7 @@ exports.insert = async ctx => {
 
 
 exports.test = async ctx => {
-    // debug print  
-    const ip = ctx.req.connection.remoteAddress
-    const method = ctx.req.method
-    const target = ctx.req.url
-    dbg_log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
-
+    // debug print
+    dbg.request_log(ctx)
     ctx.body = "ok"
 }

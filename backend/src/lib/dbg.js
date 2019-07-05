@@ -14,6 +14,14 @@ function log(...message) {
     console.log(`${time}${type}`, ...message);
 }
 
+log.request_log = (ctx) => {
+    const ip = ctx.req.connection.remoteAddress
+    const method = ctx.req.method
+    const target = ctx.req.url
+    log(`${ip}: ${method} ${target}>> body :: ${JSON.stringify(ctx.request.body).substr(0, 50)}...`)
+}
+
+
 log.info = (...message) => {
     const time = getTime();
     const type = chalk.bold(chalk.cyan('[INFO]'));
