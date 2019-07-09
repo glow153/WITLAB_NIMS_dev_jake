@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const CasSimpleEntry = require('db/models/CasSimple');
-const CasStreamTest = require('db/models/CasStreamTest')
-const CasIrdStreamTest = require('db/models/CasIrdStreamTest')
+const Cas = require('db/models/Cas')
+const CasIrd = require('db/models/CasIrd')
 const dbg = require('lib/dbg');
 const moment = require('moment')
 
@@ -89,7 +89,7 @@ exports.stream = async ctx => {
 
     let post = null
     try {
-        post = await CasStreamTest.insertPost({datetime, data})
+        post = await Cas.insertPost({datetime, data})
     } catch (e) {
         ctx.throw(e, 500)
     }
@@ -119,7 +119,7 @@ exports.stream_ird = async ctx => {
 
     let post = null
     try {
-        post = await CasIrdStreamTest.insertPost({datetime, sp_ird})
+        post = await CasIrd.insertPost({datetime, sp_ird})
     } catch (e) {
         ctx.throw(e, 500)
     }

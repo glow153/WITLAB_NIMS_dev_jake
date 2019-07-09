@@ -39,7 +39,7 @@ const observerEntrySchema = new Schema({
     Wind_Tx: Number,
     ISS_Recept: Number,
     Arc_Int: Number
-}, { collection: 'weather_stream_test' });
+}, { collection: 'weather' });
 
 
 observerEntrySchema.statics.insertPost = async function (entry){
@@ -47,4 +47,4 @@ observerEntrySchema.statics.insertPost = async function (entry){
     return post.save()
 }
 
-module.exports = mongoose.model('weather_stream_test', observerEntrySchema);
+module.exports = mongoose.model('weather', observerEntrySchema);

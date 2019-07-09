@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const casEntrySchema = new Schema({
-    datetime: String,
+    datetime: Date,
     data: {
         general_information: {},
         measurement_conditions: {},
