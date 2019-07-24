@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const casSimpleEntrySchema = new Schema({}, { collection: 'cas_simple' });
+const casSimpleSchema = new Schema({
+ }, { collection: 'cas_simple' });
 
-module.exports = mongoose.model('cas_simple', casSimpleEntrySchema);
+
+casSimpleSchema.statics.insertPost = async function (obj){
+    const post = new this(obj)
+    return post.save()
+}
+
+module.exports = mongoose.model('cas_simple', casSimpleSchema);
