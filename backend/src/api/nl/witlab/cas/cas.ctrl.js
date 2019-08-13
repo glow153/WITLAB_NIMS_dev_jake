@@ -194,56 +194,7 @@ exports.stream_file = async ctx => {
 exports.stream_simple = async ctx => {
     dbg.request_log(ctx)
 
-    // 스키마 검사
-    // const schema4check = {
-    //     datetime: Joi.string().required(),
-    //     file_abs_path: Joi.string().required(),
-    //     file_name: Joi.string().required(),
-    //     integration_time: Joi.number().required(),
-    //     ccd_temp: Joi.number().required(),
-    //     bird_all: Joi.number().required(),
-    //     illum: Joi.number().required(),
-    //     cas_uva: Joi.number().required(),
-    //     cas_uvb: Joi.number().required(),
-    //     cas_uvc: Joi.number().required(),
-    //     bird_vis: Joi.number().required(),
-    //     tri_x: Joi.number().required(),
-    //     tri_y: Joi.number().required(),
-    //     tri_z: Joi.number().required(),
-    //     color_co_x: Joi.number().required(),
-    //     color_co_y: Joi.number().required(),
-    //     color_co_z: Joi.number().required(),
-    //     color_co_u: Joi.number().required(),
-    //     peak_wl: Joi.number().required(),
-    //     cent_wl: Joi.number().required(),
-    //     domi_wl: Joi.number().required(),
-    //     cct: Joi.number().required(),
-    //     cri: Joi.number().required(),
-    //     lwr: Joi.number().required(),
-    //     mwr: Joi.number().required(),
-    //     swr: Joi.number().required(),
-    //     narr: Joi.number().required(),
-    //     auv: Joi.number().required(),
-    //     duv: Joi.number().required(),
-    //     euv: Joi.number().required(),
-    //     euva: Joi.number().required(),
-    //     euva_ratio: Joi.number().required(),
-    //     euvb: Joi.number().required(),
-    //     euvb_ratio: Joi.number().required(),
-    //     tuv: Joi.number().required(),
-    //     uva: Joi.number().required(),
-    //     uvb: Joi.number().required(),
-    //     uvi: Joi.number().required(),
-    // }
-
-    // const validate = Joi.validate(ctx.request.body, schema4check)
-
-    // if(validate.error) {
-    //     dbg(`error: invalid req body`)
-    //     ctx.status = 400
-    //     ctx.body = validate.error
-    //     return
-    // }
+    // 스키마검사 없음
 
     let post = null
     try {
