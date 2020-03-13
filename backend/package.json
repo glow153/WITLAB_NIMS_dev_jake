@@ -1,11 +1,12 @@
 {
   "name": "backend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",
     "chalk": "^2.4.2",
+    "cross-env": "^7.0.2",
     "dateformat": "^3.0.3",
     "dotenv": "^8.0.0",
     "joi": "^14.3.1",
@@ -19,12 +20,15 @@
     "mongoose": "^5.5.13",
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-double": "^0.0.1",
-    "multer": "^1.4.1"
+    "multer": "^1.4.1",
+    "nodemon": "^2.0.2"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src nodemon --watch src/ src/index.js"
-  }
+  },
+  "description": "WitLab Bigdata Storage API",
+  "author": "Jake Park"
 }
