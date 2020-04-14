@@ -20,7 +20,7 @@
     "mongoose": "^5.5.13",
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-double": "^0.0.1",
-    "multer": "^1.4.1",
+    "multer": "^1.4.2",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
