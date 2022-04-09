@@ -15,7 +15,7 @@
     "koa-compress": "^3.0.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.26",
     "mongoose": "^5.5.13",
     "mongoose-auto-increment": "^5.0.1",
